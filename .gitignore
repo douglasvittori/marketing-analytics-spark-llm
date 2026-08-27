@@ -1,0 +1,56 @@
+# ==========================================
+# Segurança & Variáveis de Ambiente
+# ==========================================
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ==========================================
+# Python & Ambientes Virtuais
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+
+# ==========================================
+# PySpark & Spark Checkpoints/Logs
+# ==========================================
+metastore_db/
+derby.log
+*.spark/
+spark-warehouse/
+checkpoint/
+logs/
+*.log
+
+# ==========================================
+# Streamlit & Cache da Aplicação
+# ==========================================
+.streamlit/secrets.toml
+
+# ==========================================
+# IDEs & Editores de Código
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==========================================
+# Sistema Operacional
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# Arquivos de Dados e Anotações Pessoais
+# ==========================================
+# comandos.txt
+# Se os datasets originais forem muito grandes, descomente a linha abaixo:
+# *.csv
