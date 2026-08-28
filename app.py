@@ -1,4 +1,5 @@
 import os
+import time
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -8,7 +9,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 # -----------------------------------------------------------------------------
-# 1. CONFIGURAÇÃO DA PÁGINA
+# 1. CONFIGURAÇÃO DA PÁGINA & CHAVES DE API
 # -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="MarketIntel: Analytics de Mkt & Gemini LLM",
@@ -31,11 +32,16 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Carrega variáveis locais ou do Streamlit Cloud Secrets
+# Carrega variáveis locais (.env) ou dos Secrets do Streamlit Cloud de forma segura
 load_dotenv()
-gemini_key = os.getenv("GEMINI_API_KEY") or st.secrets.get(
-    "GEMINI_API_KEY", None
-)
+
+gemini_key = os.getenv("GEMINI_API_KEY")
+if not gemini_key:
+  try:
+    if "GEMINI_API_KEY" in st.secrets:
+      gemini_key = st.secrets["GEMINI_API_KEY"]
+  except Exception:
+    gemini_key = None
 
 
 @st.cache_resource
